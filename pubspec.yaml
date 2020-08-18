@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_link_preview: ^1.4.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
