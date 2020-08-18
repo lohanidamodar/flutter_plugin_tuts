@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animator/animator.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  final animatorKey = AnimatorKey<double>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,16 +61,38 @@ class HomePage extends StatelessWidget {
                         SizedBox(height: 10.0),
                         SizedBox(
                           width: double.infinity,
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0)),
-                            padding: const EdgeInsets.all(16.0),
-                            color: Colors.white,
-                            child: Text(
-                              "Login",
-                              style: TextStyle(color: Colors.pink),
+                          child: Animator(
+                            tweenMap: {
+                              "first": Tween<double>(
+                                  begin: 0, end: 1),
+                              "second": Tween<double>(begin: 1, end: 0),
+                            },
+                            builder: (context, state, child) {
+                              return FractionalTranslation(
+                                translation: Offset(
+                                    state.getAnimation<double>('second').value,
+                                    0),
+                                child: Transform.scale(scale: state.getAnimation<double>('first').value,child: child),
+                              );
+                            },
+                            child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              padding: const EdgeInsets.all(16.0),
+                              color: Colors.white,
+                              child: Text(
+                                "Login",
+                                style: TextStyle(color: Colors.pink),
+                              ),
+                              onPressed: () {
+                                animatorKey.controller.reverse();
+                                animatorKey.refreshAnimation(
+                                  tween: Tween<double>(begin: 0.5,end: 1),
+                                  curve: Curves.easeInCubic,
+                                );
+                                // animatorKey.triggerAnimation();
+                              },
                             ),
-                            onPressed: () {},
                           ),
                         ),
                         Spacer()
@@ -82,65 +107,76 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 width: double.infinity,
                 decoration: BoxDecoration(color: Colors.white),
-                child: Column(
-                  children: <Widget>[
-                    Spacer(),
-                    Text("or if you are new here"),
-                    SizedBox(height: 10.0),
-                    SizedBox(
-                      width: double.infinity,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
-                        padding: const EdgeInsets.all(16.0),
-                        color: Colors.pink,
-                        child: Text(
-                          "Sign up",
-                          style: TextStyle(color: Colors.white),
+                child: Animator(
+                  animatorKey: animatorKey,
+                  triggerOnInit: true,
+                  builder: (context,state,child) {
+                    return Opacity(
+                      opacity: state.value,
+                      child: child,
+                    );
+                  },
+                    tween: Tween<double>(begin: 0,end: 1),
+                                  child: Column(
+                    children: <Widget>[
+                      Spacer(),
+                      Text("or if you are new here"),
+                      SizedBox(height: 10.0),
+                      SizedBox(
+                        width: double.infinity,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                          padding: const EdgeInsets.all(16.0),
+                          color: Colors.pink,
+                          child: Text(
+                            "Sign up",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onPressed: () {},
                         ),
-                        onPressed: () {},
                       ),
-                    ),
-                    SizedBox(height: 20.0),
-                    Text("or continue with"),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        RaisedButton.icon(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(2.0)),
-                          color: Colors.red,
-                          icon: Icon(
-                            Icons.lock,
-                            color: Colors.white,
+                      SizedBox(height: 20.0),
+                      Text("or continue with"),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          RaisedButton.icon(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(2.0)),
+                            color: Colors.red,
+                            icon: Icon(
+                              Icons.lock,
+                              color: Colors.white,
+                            ),
+                            label: Text(
+                              "Google",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed: () {},
                           ),
-                          label: Text(
-                            "Google",
-                            style: TextStyle(color: Colors.white),
+                          SizedBox(width: 10.0),
+                          RaisedButton.icon(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(2.0)),
+                            color: Colors.indigo,
+                            icon: Icon(
+                              Icons.lock,
+                              color: Colors.white,
+                            ),
+                            label: Text(
+                              "Facebook",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed: () {},
                           ),
-                          onPressed: () {},
-                        ),
-                        SizedBox(width: 10.0),
-                        RaisedButton.icon(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(2.0)),
-                          color: Colors.indigo,
-                          icon: Icon(
-                            Icons.lock,
-                            color: Colors.white,
-                          ),
-                          label: Text(
-                            "Facebook",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                    Spacer(
-                      flex: 2,
-                    )
-                  ],
+                        ],
+                      ),
+                      Spacer(
+                        flex: 2,
+                      )
+                    ],
+                  ),
                 ),
               ),
             )
