@@ -1,16 +1,38 @@
 # flutter_plugin_tuts
 
-A new Flutter project.
+Tutorials on using various plugins in flutter
 
-## Getting Started
+## URL Preview
+- Video: [https://www.youtube.com/watch?v=8c-EIwbNchw](https://www.youtube.com/watch?v=8c-EIwbNchw)
+- Plugin: [https://pub.dev/packages/flutter_link_preview](https://pub.dev/packages/flutter_link_preview)
+- Source branch: [link-preview](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/link-preview)
 
-This project is a starting point for a Flutter application.
+## Animator
+- Video: coming soon
+- Plugin: [https://pub.dev/packages/animator](https://pub.dev/packages/animator)
+- Source branch: [animator](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/animator)
 
-A few resources to get you started if this is your first Flutter project:
+## Connection status bar
+- Video: coming soon
+- Plugin: [https://pub.dev/packages/connection_status_bar](https://pub.dev/packages/connection_status_bar)
+- Source branch: [connection](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/connection)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Device info
+- Video: coming soon
+- Plugin: [https://pub.dev/packages/device_info](https://pub.dev/packages/device_info)
+- Source branch: [device-info](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/device-info)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## fluttertoast
+- Video: coming soon
+- Plugin: [https://pub.dev/packages/fluttertoast](https://pub.dev/packages/fluttertoast)
+- Source branch: [toast](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/toast)
+
+## flutter auth buttons
+- Video: coming soon
+- Plugin: [https://pub.dev/packages/flutter_auth_buttons](https://pub.dev/packages/flutter_auth_buttons)
+- Source branch: [auth-buttons](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/auth-buttons)
+
+## Package info
+- Video: coming soon
+- Plugin: [https://pub.dev/packages/package_info](https://pub.dev/packages/package_info)
+- Source branch: [package-info](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/package-info)
