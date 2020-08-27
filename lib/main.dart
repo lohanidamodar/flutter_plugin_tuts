@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +28,36 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
-        children: <Widget>[],
+        children: <Widget>[
+          RaisedButton(
+            child: Text("Show toast"),
+            onPressed: () {
+              Fluttertoast.showToast(
+                msg: "This is a toast message",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Colors.red,
+                fontSize: 20.0,
+              );
+            },
+          ),
+          RaisedButton(
+            child: Text("Show toast context"),
+            onPressed: () {
+              var ftoast = FToast(context);
+              ftoast.showToast(
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Text("Hello world"),
+                ),
+              );
+            },
+          )
+        ],
       ),
     );
   }
