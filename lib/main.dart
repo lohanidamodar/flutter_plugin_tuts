@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:package_info/package_info.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +28,23 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
-        children: <Widget>[],
+        children: <Widget>[
+          FutureBuilder(
+            future: PackageInfo.fromPlatform(),
+            builder: (BuildContext context, AsyncSnapshot<PackageInfo> snapshot) {
+              if(snapshot.hasData)
+                return Column(
+                  children: [
+                    Text(snapshot.data.appName),
+                    Text(snapshot.data.packageName),
+                    Text(snapshot.data.buildNumber),
+                    Text(snapshot.data.version),
+                  ],
+                );
+              return Container();
+            },
+          ),
+        ],
       ),
     );
   }
