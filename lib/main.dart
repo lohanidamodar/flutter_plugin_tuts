@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +28,32 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
-        children: <Widget>[],
+        children: <Widget>[
+          GoogleSignInButton(
+            onPressed: () {},
+            borderRadius: 10.0,
+            darkMode: true,
+            text: "Continue with Google",
+            textStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+              color: Colors.white,
+            ),
+          ),
+          TwitterSignInButton(
+            onPressed: () {},
+          ),
+          FacebookSignInButton(
+            onPressed: () {},
+          ),
+          MicrosoftSignInButton(
+            onPressed: () {},
+            darkMode: true,
+          ),
+          AppleSignInButton(
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }
