@@ -8,7 +8,7 @@ Tutorials on using various plugins in flutter
 - Source branch: [link-preview](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/link-preview)
 
 ## Animator
-- Video: coming soon
+- Video: [https://www.youtube.com/watch?v=lLEamLsoZWU](https://www.youtube.com/watch?v=lLEamLsoZWU)
 - Plugin: [https://pub.dev/packages/animator](https://pub.dev/packages/animator)
 - Source branch: [animator](https://github.com/lohanidamodar/flutter_plugin_tuts/tree/animator)
 
